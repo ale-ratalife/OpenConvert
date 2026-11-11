@@ -1,0 +1,39 @@
+[package]
+name = "openconvert"
+version = "1.0.0"
+description = "100% Local, Open Source File Converter"
+authors = ["alexyalex <https://alexyalex.site>"]
+license = "MIT"
+edition = "2021"
+
+[build-dependencies]
+tauri-build = { version = "2.0", features = [] }
+
+[dependencies]
+tauri = { version = "2.0", features = [] }
+tauri-plugin-shell = "2.0"
+tauri-plugin-dialog = "2.0"
+tauri-plugin-fs = "2.0"
+tauri-plugin-http = "2.0"
+tauri-plugin-process = "2.0"
+tauri-plugin-opener = "2.0"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+tokio = { version = "1.0", features = ["full"] }
+image = "0.24"
+walkdir = "2.3"
+zip = "0.6"
+tempfile = "3.0"
+uuid = { version = "1.0", features = ["v4", "serde"] }
+base64 = "0.21"
+mime = "0.3"
+mime_guess = "2.0"
+if-addrs = "0.15"
+reqwest = { version = "0.12", features = ["json"] }
+printpdf = "0.4"
+
+[profile.release]
+strip = true
+lto = true
+codegen-units = 1
+panic = "abort"

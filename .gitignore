@@ -1,0 +1,75 @@
+# Dependencies
+node_modules/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Build outputs
+dist/
+build/
+target/
+*.egg-info/
+
+# Tauri
+src-tauri/target/
+src-tauri/binaries/
+**/*.msi
+**/*.dmg
+**/*.AppImage
+**/*.deb
+**/*.rpm
+
+# Python engine build
+python-engine/dist/
+python-engine/build/
+python-engine/*.spec
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Misc
+*.tmp
+*.temp
+.cache/ffmpeg_temp/
+ffmpeg.zip
+node_modules/
+dist/
+src-tauri/target/
+src-tauri/binaries/
+python-engine/build/
+python-engine/dist/
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.pkg
+*.exe
+*.msi
+*.dmg
+*.AppImage
