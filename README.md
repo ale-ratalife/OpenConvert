@@ -3,8 +3,12 @@
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)](#)
 [![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](#)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey.svg)](#)
+[![Rust](https://img.shields.io/badge/rust-1.80%2B-orange.svg)](#)
+[![React](https://img.shields.io/badge/react-18-61DAFB.svg)](#)
+[![Tauri](https://img.shields.io/badge/tauri-v2-24C8DB.svg)](#)
 
-OpenConvert is a robust, high-performance, open-source file conversion utility designed for versatile format transformations. Engineered with scalability and privacy in mind, it provides both a comprehensive Command Line Interface (CLI) for automated workflows and a streamlined interface for manual processing. All operations are executed locally, ensuring zero data leakage to third-party cloud services.
+OpenConvert is a robust, high-performance, open-source file conversion utility designed for versatile format transformations. Engineered with scalability and privacy in mind, it provides both a comprehensive **Graphical User Interface (GUI)** for manual processing and a **built-in REST API Server** for automated workflows. All operations are executed 100% locally, ensuring zero data leakage to third-party cloud services.
 
 ## Table of Contents
 
@@ -12,12 +16,15 @@ OpenConvert is a robust, high-performance, open-source file conversion utility d
 - [Core Features](#core-features)
 - [System Requirements](#system-requirements)
 - [Installation](#installation)
-  - [Standard Installation](#standard-installation)
-  - [Docker Installation](#docker-installation)
+  - [Windows (Pre-built Binaries)](#windows-pre-built-binaries)
+  - [Linux & macOS (Via GitHub Releases)](#linux--macos-via-github-releases)
+  - [From Source](#from-source)
+  - [Docker (Planned)](#docker-planned)
 - [Configuration](#configuration)
 - [Usage Guide](#usage-guide)
-  - [Command Line Interface (CLI)](#command-line-interface-cli)
+  - [Graphical Interface (GUI)](#graphical-interface-gui)
   - [API Integration](#api-integration)
+  - [Command Line (Planned)](#command-line-planned)
 - [Testing](#testing)
 - [Contributing](#contributing)
 - [License](#license)
@@ -25,132 +32,334 @@ OpenConvert is a robust, high-performance, open-source file conversion utility d
 
 ## Architecture & Philosophy
 
-OpenConvert is built upon a modular architecture that separates the core conversion engine from the user interfaces (CLI/GUI). This design allows for seamless integration of new format handlers and processing libraries (such as FFmpeg for media and ImageMagick for raster graphics) without disrupting existing functionality. 
+OpenConvert is built upon a **modular three-layer architecture** that separates concerns cleanly:
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│  Frontend (React 18 + TypeScript + Vite + Tailwind CSS)    │
+│  - Glassmorphism UI with i18n (10 languages)               │
+│  - Drag & drop, batch queue, progress tracking             │
+├─────────────────────────────────────────────────────────────┤
+│  Backend (Rust + Tauri v2 + Tokio)                         │
+│  - Native format converters (image, video, audio, archive) │
+│  - FFmpeg sidecar for multimedia                           │
+│  - Python sidecar bridge (FastAPI) for docs/ebooks/OCR     │
+├─────────────────────────────────────────────────────────────┤
+│  Sidecars (Bundled Binaries)                               │
+│  - FFmpeg 7.x (video/audio/frame extraction)               │
+│  - Python 3.11 + FastAPI (PDF↔DOCX, ebooks, OCR)          │
+│  - Calibre ebook-convert, Tesseract OCR                    │
+└─────────────────────────────────────────────────────────────┘
+```
+
+This design allows for seamless integration of new format handlers without disrupting existing functionality. The Tauri framework provides a lightweight WebView-based desktop shell with near-native performance and minimal binary size.
 
 ## Core Features
 
-* **Extensive Format Support:** Comprehensive conversion capabilities across documents (PDF, DOCX, TXT), images (PNG, JPEG, WEBP, SVG), and multimedia (MP4, MP3, WAV).
-* **Local Processing:** Absolute data privacy. Files are processed entirely on the host machine.
-* **Asynchronous Batch Operations:** Capable of handling large directories of files concurrently, optimizing CPU utilization.
-* **Extensible Plugin System:** Easily write custom conversion scripts and integrate them into the OpenConvert pipeline.
-* **Cross-Platform:** Fully compatible with Linux, macOS, and Windows environments.
+* **Extensive Format Support:** Comprehensive conversion across 7 categories — Images (PNG, JPG, WEBP, ICO, TIFF, BMP, GIF, AVIF, HEIC), Video (MP4, WEBM, MOV, AVI, MKV, FLV, M4V, 3GP + audio extraction + frame extraction), Audio (MP3, WAV, FLAC, OGG, AAC, M4A, OPUS, WMA), Documents (PDF ↔ DOCX, TXT → PDF, PDF → Images), Ebooks (EPUB, MOBI, AZW3, PDF, FB2, LIT, LRF, PDB, RB, TCR), Archives (ZIP create/extract), OCR (Image → Text).
+* **Local-First Processing:** Absolute data privacy. Files never leave your machine. Zero telemetry, zero tracking, zero network requests for conversions.
+* **Asynchronous Batch Operations:** Capable of handling large directories of files concurrently with per-file progress tracking, optimizing CPU utilization via Tokio runtime.
+* **Built-in REST API Server:** Start a local server (`http://localhost:8080`) with API Key auth, Swagger UI at `/docs`, and endpoints for document conversion, ebook conversion, and OCR — ideal for automation and integration.
+* **Cross-Platform:** Native builds for Windows (NSIS + MSI), Linux (AppImage), macOS (Universal DMG — Intel + Apple Silicon).
+* **10-Language Support:** English, Spanish, Russian, Portuguese, French, Japanese, German, Chinese, Thai, Arabic (with RTL support).
+* **Extensible Converter System:** Rust-based converter modules (`image.rs`, `video.rs`, `audio.rs`, `archive.rs`) with clean Tauri command interfaces for easy addition of new formats.
 
 ## System Requirements
 
-Ensure your host machine meets the following minimum requirements:
+### Runtime (Pre-built Binaries)
+| Platform | Minimum |
+|----------|---------|
+| **Windows** | Windows 10 1903+ (x64) |
+| **Linux** | glibc 2.31+, GTK 3.24+, WebKitGTK 2.38+, FUSE (for AppImage) |
+| **macOS** | macOS 11+ (Big Sur), Universal (Intel + Apple Silicon) |
 
-* **Node.js:** v18.x LTS or higher (or Python 3.9+, depending on core engine implementation).
-* **Memory:** Minimum 4GB RAM (8GB+ recommended for large multimedia processing).
-* **System Dependencies:** 
-  * `ffmpeg` (for audio/video conversion)
-  * `imagemagick` (for advanced image manipulation)
+### Build from Source
+* **Node.js:** v20.x LTS or higher
+* **Rust:** 1.80+ (stable toolchain via `rustup`)
+* **Python:** 3.11+ (for document/ebook/OCR sidecar)
+* **System Dependencies:**
+  * `ffmpeg` (bundled in release, required for source build)
+  * `libheif` (for HEIC/AVIF support)
+  * `tesseract-ocr` (for OCR — bundled in Windows installer)
+  * `calibre` (for ebook conversion — `ebook-convert` CLI)
 
 ## Installation
 
-### Standard Installation
+### Windows (Pre-built Binaries) — **Ready Now**
 
-Clone the repository and install the required dependencies via your package manager.
+| File | Size | Type | Description |
+|------|------|------|-------------|
+| [`OpenConvert_1.0.0_x64-setup.exe`](src-tauri/target/release/bundle/nsis/OpenConvert_1.0.0_x64-setup.exe) | ~240 MB | **NSIS Installer** | Recommended. Creates Start Menu entry, adds to PATH, includes uninstaller, bundles all sidecars (FFmpeg, Python engine, Tesseract, Calibre). |
+| [`OpenConvert_1.0.0_x64_en-US.msi`](src-tauri/target/release/bundle/msi/OpenConvert_1.0.0_x64_en-US.msi) | ~278 MB | **MSI Installer** | Enterprise/GPO deployment. Silent install support: `msiexec /i OpenConvert_1.0.0_x64_en-US.msi /qn` |
+| **Portable** | ~12 MB + binaries | **Folder Copy** | Copy entire `src-tauri/target/release/` folder. Run `openconvert.exe`. Requires `binaries/` subfolder with `ffmpeg.exe`, `ffprobe.exe`, `openconvert-engine.exe`. |
+
+> **Note**: Windows installers bundle all sidecars (FFmpeg, Python FastAPI engine, Tesseract OCR, Calibre). No separate installs needed.
+
+### Linux & macOS (Via GitHub Releases)
+
+Builds for Linux (`.AppImage`) and macOS (`.dmg`) are **not built locally** (Tauri compiles only for the current OS). They are generated automatically via **GitHub Actions CI/CD** on every release tag.
+
+→ **Download from:** [GitHub Releases](https://github.com/ale-ratalife/OpenConvert/releases)
+
+| Platform | Artifact | Install |
+|----------|----------|---------|
+| **Linux (x86_64)** | `OpenConvert_1.0.0_amd64.AppImage` | `chmod +x *.AppImage && ./*.AppImage` (requires `libfuse2`) |
+| **macOS (Universal)** | `OpenConvert_1.0.0_universal.dmg` | Open DMG → drag to Applications → right-click → Open (first run) |
+
+### From Source
 
 ```bash
-# Clone the repository
-git clone https://github.com/ale-ratalife/OpenConvert.git
+# Prerequisites
+# - Node.js 20+
+# - Rust 1.80+ (rustup default stable)
+# - Python 3.11+
 
-# Navigate to the project directory
+# 1. Clone
+git clone https://github.com/ale-ratalife/OpenConvert.git
 cd OpenConvert
 
-# Install dependencies
-npm install --production
+# 2. Frontend dependencies
+npm install
+
+# 3. Python sidecar dependencies
+python -m venv venv
+# Windows:
+./venv/Scripts/python.exe -m pip install -r python-engine/requirements.txt
+./venv/Scripts/python.exe -m pip install pyinstaller
+./venv/Scripts/python.exe python-engine/build.py
+# Linux/macOS:
+./venv/bin/python -m pip install -r python-engine/requirements.txt
+./venv/bin/python -m pip install pyinstaller
+./venv/bin/python python-engine/build.py
+# → Copies openconvert-engine.exe to src-tauri/binaries/
+
+# 4. Download FFmpeg static binaries to src-tauri/binaries/
+# Windows: https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-win64-gpl.zip
+# Linux/macOS: use package manager (apt install ffmpeg, brew install ffmpeg)
+
+# 5. Development (hot reload)
+npm run tauri:dev
+
+# 6. Production build
+npm run tauri:build
+# Output: src-tauri/target/release/bundle/
 ```
 
-### Docker Installation
+### Docker (Planned)
 
-For isolated environments and CI/CD pipelines, you can build and run OpenConvert via Docker.
-
-```bash
-# Build the Docker image
-docker build -t openconvert:latest .
-
-# Run the container, mapping your local directory to the container's workspace
-docker run -v /path/to/local/files:/workspace openconvert:latest cli --help
+```dockerfile
+# Planned: Multi-stage build with Tauri, Rust, Python, FFmpeg
+# docker build -t openconvert:latest .
+# docker run -v /path/to/files:/workspace openconvert:latest
 ```
 
 ## Configuration
 
-Environment variables are used to configure runtime behavior. Create a `.env` file in the root directory based on the provided `.env.example`.
+Environment variables configure runtime behavior. Create a `.env` file in the project root or set system-wide:
 
 ```env
 # Logging level (debug, info, warn, error)
-LOG_LEVEL=info
+OPENCONVERT_LOG_LEVEL=info
 
-# Maximum concurrent conversion threads
-MAX_THREADS=4
+# API Server port
+OPENCONVERT_API_PORT=8080
 
-# Default output directory
-DEFAULT_OUTPUT_DIR=./dist
+# Maximum upload file size (bytes)
+OPENCONVERT_MAX_FILE_SIZE=104857600
+
+# Python sidecar auto-start (true/false)
+OPENCONVERT_SIDECAR_AUTO_START=true
+```
+
+### Tauri Config (`src-tauri/tauri.conf.json`)
+
+```json
+{
+  "bundle": {
+    "active": true,
+    "targets": ["nsis", "msi", "dmg", "appimage"],
+    "identifier": "com.openconvert.app",
+    "icon": ["icons/icon.png"],
+    "windows": {
+      "nsis": { "installerIcon": "icons/icon.ico" },
+      "msi": { "upgradeCode": "{...}" }
+    }
+  },
+  "plugins": {
+    "opener": {},
+    "fs": { "scope": ["$APPDATA/*", "$TEMP/*"] }
+  }
+}
 ```
 
 ## Usage Guide
 
-### Command Line Interface (CLI)
+### Graphical Interface (GUI)
 
-The CLI is designed for easy integration into bash scripts and cron jobs.
-
-**Basic Conversion:**
-```bash
-openconvert process --input /path/to/source.docx --format pdf --output /path/to/destination/
-```
-
-**Batch Directory Conversion:**
-```bash
-openconvert batch --dir /path/to/images/ --format webp --threads 4
-```
+1. **Launch** OpenConvert from Start Menu / Applications / terminal.
+2. **Converter View** (default):
+   - Drag & drop files or click "Select Files"
+   - Choose output format per file (dropdown) or use "Convert All" for bulk
+   - Click **Convert All** → progress tracked per file
+   - Download converted files individually or as ZIP
+3. **API Server View**:
+   - Click **Start Server** → runs on `http://localhost:8080`
+   - Copy **API Key** from UI
+   - Open **Swagger UI** at `http://localhost:8080/docs`
+4. **Settings View**:
+   - Language selector (10 languages, instant switch)
+   - Theme preview (Glassmorphism/Rose accent)
+   - Clear cache, view privacy policy, about dialog
 
 ### API Integration
 
-If you wish to use OpenConvert as a library within your own application:
+The built-in REST API enables automation and integration with other tools.
+
+**Base URL:** `http://localhost:8080`  
+**Auth:** Header `X-API-Key: <your-key>` (shown in API Server view)  
+**Swagger Docs:** `http://localhost:8080/docs`
+
+#### Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/api/status` | Health check, returns `{ "status": "ok", "version": "1.0.0" }` |
+| `POST` | `/api/convert` | Document conversion (PDF↔DOCX, TXT→PDF, PDF→Images) |
+| `POST` | `/api/ebook` | Ebook conversion (Calibre: EPUB, MOBI, AZW3, etc.) |
+| `POST` | `/api/ocr` | OCR — Image → Text (Tesseract) |
+
+#### Example: Convert PDF to DOCX (cURL)
+
+```bash
+curl -X POST "http://localhost:8080/api/convert" \
+  -H "X-API-Key: your-api-key-here" \
+  -F "file=@document.pdf" \
+  -F "target_format=docx" \
+  --output document.docx
+```
+
+#### Example: OCR Image to Text (cURL)
+
+```bash
+curl -X POST "http://localhost:8080/api/ocr" \
+  -H "X-API-Key: your-api-key-here" \
+  -F "file=@scan.png" \
+  -F "language=eng+spa"
+```
+
+#### Example: JavaScript/Node.js Integration
 
 ```javascript
-const OpenConvert = require('openconvert-core');
+const fs = require('fs');
+const FormData = require('form-data');
+const fetch = require('node-fetch');
 
-const converter = new OpenConvert({ threads: 2 });
+async function convertPdfToDocx(inputPath, outputPath, apiKey) {
+  const form = new FormData();
+  form.append('file', fs.createReadStream(inputPath));
+  form.append('target_format', 'docx');
 
-converter.transform('source.jpg', 'png')
-  .then(output => console.log(`Successfully converted to ${output}`))
-  .catch(err => console.error(`Conversion failed: ${err.message}`));
+  const res = await fetch('http://localhost:8080/api/convert', {
+    method: 'POST',
+    headers: { 'X-API-Key': apiKey, ...form.getHeaders() },
+    body: form
+  });
+
+  if (!res.ok) throw new Error(`Conversion failed: ${res.statusText}`);
+  const dest = fs.createWriteStream(outputPath);
+  res.body.pipe(dest);
+  return new Promise((resolve, reject) => {
+    dest.on('finish', resolve);
+    dest.on('error', reject);
+  });
+}
+
+// Usage
+convertPdfToDocx('input.pdf', 'output.docx', 'your-api-key')
+  .then(() => console.log('Done!'))
+  .catch(console.error);
+```
+
+### Command Line (Planned)
+
+Future releases will expose a CLI via Tauri's `cli` plugin:
+
+```bash
+# Planned syntax
+openconvert process --input file.pdf --format docx --output ./out/
+openconvert batch --dir ./images --format webp --threads 4
+openconvert api start --port 8080 --api-key "xxx"
 ```
 
 ## Testing
 
-This project uses standard testing frameworks to ensure reliability. To execute the test suite:
-
 ```bash
-# Run unit tests
-npm run test
+# Frontend (Vitest + React Testing Library)
+npm run test              # Unit tests
+npm run test:ui           # UI tests with Vitest UI
+npm run test:coverage     # Coverage report
 
-# Run end-to-end integration tests
+# Rust Backend
+cd src-tauri && cargo test           # Unit + integration tests
+cd src-tauri && cargo test --doc     # Doc tests
+
+# Python Sidecar
+./venv/Scripts/python.exe -m pytest python-engine/ -v
+
+# End-to-End (Playwright - planned)
 npm run test:e2e
-
-# Generate coverage report
-npm run test:coverage
 ```
 
 ## Contributing
 
-We adhere to a strict code of conduct and branching strategy. 
-1. Fork the repository.
-2. Create a feature branch (`git checkout -b feature/issue-id-description`).
-3. Commit your changes following Conventional Commits guidelines.
-4. Push to the branch (`git push origin feature/issue-id-description`).
-5. Open a Pull Request detailing the changes and linking relevant issues.
+We adhere to a strict code of conduct and branching strategy.
+
+1. **Fork** the repository: https://github.com/ale-ratalife/OpenConvert
+2. **Create a feature branch:** `git checkout -b feature/issue-id-description`
+3. **Commit** following Conventional Commits: `feat: add HEIC support`, `fix: resolve OCR timeout`
+4. **Push:** `git push origin feature/issue-id-description`
+5. **Open a Pull Request** detailing changes and linking relevant issues.
+
+### Code Style
+
+| Language | Tools |
+|----------|-------|
+| **Rust** | `cargo fmt` + `cargo clippy -D warnings` |
+| **TypeScript/React** | `npm run lint` (ESLint + Prettier + TypeScript strict) |
+| **Python** | `black` + `ruff` + `mypy` |
 
 Please review `CONTRIBUTING.md` for comprehensive guidelines.
 
 ## License
 
-This software is distributed under the MIT License. See the `LICENSE` file for full documentation.
+This software is distributed under the **MIT License**. See the [`LICENSE`](LICENSE) file for full documentation.
 
 ## Credits & Acknowledgments
 
-* **Creation and Concept:** OpenConvert was conceptualized, designed, and developed by **[alexyalex.site](https://alexyalex.site)**. 
-* **Maintainer:** [ale-ratalife](https://github.com/ale-ratalife)
-* We thank the open-source community for the underlying libraries that make this project possible.
+**Creation and Concept:** OpenConvert was conceptualized, designed, and developed by **[alexyalex.site](https://alexyalex.site)**.  
+**Maintainer:** [ale-ratalife](https://github.com/ale-ratalife)
+
+### Core Technologies
+- **Tauri v2** — Lightweight, secure desktop app framework (Rust + WebView)
+- **React 18 + TypeScript + Vite** — Modern frontend tooling
+- **Tailwind CSS** — Utility-first styling with Glassmorphism design system
+- **i18next** — Internationalization (10 languages)
+- **Phosphor Icons** — Clean, consistent icon set
+
+### Bundled Engines & Libraries
+- **FFmpeg 7.x** — Multimedia processing (video, audio, frame extraction)
+- **Rust `image` crate** — Native image format support (PNG, JPEG, WEBP, TIFF, BMP, GIF, ICO)
+- **Rust `zip` crate** — Archive creation/extraction
+- **Python 3.11 + FastAPI** — Document/Ebook/OCR microservice sidecar
+- **Pillow** — Image processing for Python sidecar
+- **python-docx** — DOCX read/write
+- **Calibre (`ebook-convert`)** — Ebook format conversion (20+ formats)
+- **Tesseract OCR** — Optical Character Recognition (100+ languages)
+
+### Community
+We thank the open-source community for the underlying libraries that make this project possible. Special thanks to the Tauri, FFmpeg, Calibre, and Tesseract teams for their exceptional work.
+
+---
+
+**Made with ❤️ for privacy-first file conversion**  
+[Repository](https://github.com/ale-ratalife/OpenConvert) • [Issues](https://github.com/ale-ratalife/OpenConvert/issues) • [Releases](https://github.com/ale-ratalife/OpenConvert/releases)
