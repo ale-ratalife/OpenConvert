@@ -1,0 +1,89 @@
+{
+  "app": {
+    "name": "OpenConvert",
+    "tagline": "Local File Converter"
+  },
+  "nav": {
+    "converter": "Converter",
+    "apiServer": "API Server",
+    "settings": "Settings"
+  },
+  "converter": {
+    "dropzone": {
+      "title": "Drag and drop files here",
+      "subtitle": "Maximum 5 files at once",
+      "button": "Select Files"
+    },
+    "fileList": {
+      "name": "Name",
+      "size": "Size",
+      "targetFormat": "Target Format",
+      "status": "Status",
+      "actions": "Actions",
+      "remove": "Remove",
+      "download": "Download"
+    },
+    "status": {
+      "pending": "Pending",
+      "converting": "Converting...",
+      "completed": "Completed",
+      "failed": "Failed"
+    },
+    "convertAll": "Convert All",
+    "converting": "Converting...",
+    "noFiles": "No files added yet",
+    "maxFiles": "Maximum 5 files allowed",
+    "downloadReady": "Ready to download"
+  },
+  "apiServer": {
+    "title": "Local API Server",
+    "description": "Run a local REST API for file conversion",
+    "start": "Start Server",
+    "stop": "Stop Server",
+    "running": "Running",
+    "stopped": "Stopped",
+    "address": "Server Address",
+    "port": "Port",
+    "apiKey": "API Key",
+    "generateKey": "Generate New Key",
+    "copyKey": "Copy Key",
+    "keyCopied": "Key copied to clipboard",
+    "endpoints": {
+      "title": "Available Endpoints",
+      "convert": "POST /api/convert - Convert files",
+      "status": "GET /api/status - Server status"
+    },
+    "security": "Authentication required via Bearer token"
+  },
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "theme": "Theme",
+    "cache": "Cache",
+    "clearCache": "Clear Cache",
+    "cacheCleared": "Cache cleared successfully",
+    "about": "About",
+    "version": "Version",
+    "credits": "Developed by alexyalex.site",
+    "license": "MIT License"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "close": "Close",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit"
+  },
+  "formats": {
+    "image": ["PNG", "JPG", "WEBP", "ICO", "TIFF", "BMP", "GIF"],
+    "video": ["MP4", "MKV", "AVI", "WEBM", "MOV", "FLV"],
+    "audio": ["MP3", "WAV", "FLAC", "AAC", "OGG", "M4A"],
+    "document": ["PDF", "DOCX", "DOC", "TXT", "RTF", "ODT"],
+    "ebook": ["EPUB", "MOBI", "AZW3", "PDF"],
+    "archive": ["ZIP", "TAR", "GZ", "7Z"]
+  }
+}

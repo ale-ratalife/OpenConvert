@@ -1,0 +1,89 @@
+{
+  "app": {
+    "name": "OpenConvert",
+    "tagline": "Lokaler Dateikonverter"
+  },
+  "nav": {
+    "converter": "Konverter",
+    "apiServer": "API Server",
+    "settings": "Einstellungen"
+  },
+  "converter": {
+    "dropzone": {
+      "title": "Dateien hierher ziehen",
+      "subtitle": "Maximal 5 Dateien gleichzeitig",
+      "button": "Dateien auswählen"
+    },
+    "fileList": {
+      "name": "Name",
+      "size": "Größe",
+      "targetFormat": "Zielformat",
+      "status": "Status",
+      "actions": "Aktionen",
+      "remove": "Entfernen",
+      "download": "Herunterladen"
+    },
+    "status": {
+      "pending": "Wartend",
+      "converting": "Konvertiert...",
+      "completed": "Abgeschlossen",
+      "failed": "Fehlgeschlagen"
+    },
+    "convertAll": "Alles konvertieren",
+    "converting": "Konvertiert...",
+    "noFiles": "Keine Dateien hinzugefügt",
+    "maxFiles": "Maximal 5 Dateien erlaubt",
+    "downloadReady": "Bereit zum Herunterladen"
+  },
+  "apiServer": {
+    "title": "Lokaler API Server",
+    "description": "Führen Sie einen lokalen REST API für Dateikonvertierung aus",
+    "start": "Server starten",
+    "stop": "Server stoppen",
+    "running": "Läuft",
+    "stopped": "Gestoppt",
+    "address": "Serveradresse",
+    "port": "Port",
+    "apiKey": "API-Schlüssel",
+    "generateKey": "Neuen Schlüssel generieren",
+    "copyKey": "Schlüssel kopieren",
+    "keyCopied": "Schlüssel in Zwischenablage kopiert",
+    "endpoints": {
+      "title": "Verfügbare Endpoints",
+      "convert": "POST /api/convert - Dateien konvertieren",
+      "status": "GET /api/status - Serverstatus"
+    },
+    "security": "Authentifizierung per Bearer-Token erforderlich"
+  },
+  "settings": {
+    "title": "Einstellungen",
+    "language": "Sprache",
+    "theme": "Design",
+    "cache": "Cache",
+    "clearCache": "Cache leeren",
+    "cacheCleared": "Cache erfolgreich geleert",
+    "about": "Über",
+    "version": "Version",
+    "credits": "Entwickelt von alexyalex.site",
+    "license": "MIT-Lizenz"
+  },
+  "common": {
+    "loading": "Laden...",
+    "error": "Fehler",
+    "success": "Erfolg",
+    "cancel": "Abbrechen",
+    "confirm": "Bestätigen",
+    "close": "Schließen",
+    "save": "Speichern",
+    "delete": "Löschen",
+    "edit": "Bearbeiten"
+  },
+  "formats": {
+    "image": ["PNG", "JPG", "WEBP", "ICO", "TIFF", "BMP", "GIF"],
+    "video": ["MP4", "MKV", "AVI", "WEBM", "MOV", "FLV"],
+    "audio": ["MP3", "WAV", "FLAC", "AAC", "OGG", "M4A"],
+    "document": ["PDF", "DOCX", "DOC", "TXT", "RTF", "ODT"],
+    "ebook": ["EPUB", "MOBI", "AZW3", "PDF"],
+    "archive": ["ZIP", "TAR", "GZ", "7Z"]
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "app": {
+    "name": "OpenConvert",
+    "tagline": "ตัวแปลงไฟล์แบบออฟไลน์"
+  },
+  "nav": {
+    "converter": "ตัวแปลง",
+    "apiServer": "เซิร์ฟเวอร์ API",
+    "settings": "การตั้งค่า"
+  },
+  "converter": {
+    "dropzone": {
+      "title": "ลากและวางไฟล์ที่นี่",
+      "subtitle": "สูงสุด 5 ไฟล์ในครั้งเดียว",
+      "button": "เลือกไฟล์"
+    },
+    "fileList": {
+      "name": "ชื่อ",
+      "size": "ขนาด",
+      "targetFormat": "รูปแบบเป้าหมาย",
+      "status": "สถานะ",
+      "actions": "การกระทำ",
+      "remove": "ลบ",
+      "download": "ดาวน์โหลด"
+    },
+    "status": {
+      "pending": "รอดำเนินการ",
+      "converting": "กำลังแปลง...",
+      "completed": "เสร็จสิ้น",
+      "failed": "ล้มเหลว"
+    },
+    "convertAll": "แปลงทั้งหมด",
+    "converting": "กำลังแปลง...",
+    "noFiles": "ยังไม่มีไฟล์",
+    "maxFiles": "สูงสุด 5 ไฟล์",
+    "downloadReady": "พร้อมดาวน์โหลด"
+  },
+  "apiServer": {
+    "title": "เซิร์ฟเวอร์ API ท้องถิ่น",
+    "description": "รัน REST API ท้องถิ่นสำหรับการแปลงไฟล์",
+    "start": "เริ่มเซิร์ฟเวอร์",
+    "stop": "หยุดเซิร์ฟเวอร์",
+    "running": "กำลังทำงาน",
+    "stopped": "หยุดแล้ว",
+    "address": "ที่อยู่เซิร์ฟเวอร์",
+    "port": "พอร์ต",
+    "apiKey": "คีย์ API",
+    "generateKey": "สร้างคีย์ใหม่",
+    "copyKey": "คัดลอกคีย์",
+    "keyCopied": "คัดลอกคีย์แล้ว",
+    "endpoints": {
+      "title": "Endpoint ที่ใช้ได้",
+      "convert": "POST /api/convert - แปลงไฟล์",
+      "status": "GET /api/status - สถานะเซิร์ฟเวอร์"
+    },
+    "security": "ต้องการการยืนยันตัวตนด้วย Bearer token"
+  },
+  "settings": {
+    "title": "การตั้งค่า",
+    "language": "ภาษา",
+    "theme": "ธีม",
+    "cache": "แคช",
+    "clearCache": "ล้างแคช",
+    "cacheCleared": "ล้างแคชเรียบร้อย",
+    "about": "เกี่ยวกับ",
+    "version": "เวอร์ชัน",
+    "credits": "พัฒนาโดย alexyalex.site",
+    "license": "สัญญาอนุญาต MIT"
+  },
+  "common": {
+    "loading": "กำลังโหลด...",
+    "error": "ข้อผิดพลาด",
+    "success": "สำเร็จ",
+    "cancel": "ยกเลิก",
+    "confirm": "ยืนยัน",
+    "close": "ปิด",
+    "save": "บันทึก",
+    "delete": "ลบ",
+    "edit": "แก้ไข"
+  },
+  "formats": {
+    "image": ["PNG", "JPG", "WEBP", "ICO", "TIFF", "BMP", "GIF"],
+    "video": ["MP4", "MKV", "AVI", "WEBM", "MOV", "FLV"],
+    "audio": ["MP3", "WAV", "FLAC", "AAC", "OGG", "M4A"],
+    "document": ["PDF", "DOCX", "DOC", "TXT", "RTF", "ODT"],
+    "ebook": ["EPUB", "MOBI", "AZW3", "PDF"],
+    "archive": ["ZIP", "TAR", "GZ", "7Z"]
+  }
+}

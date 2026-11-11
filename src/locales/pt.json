@@ -1,0 +1,89 @@
+{
+  "app": {
+    "name": "OpenConvert",
+    "tagline": "Conversor de Arquivos Local"
+  },
+  "nav": {
+    "converter": "Conversor",
+    "apiServer": "Servidor API",
+    "settings": "Configurações"
+  },
+  "converter": {
+    "dropzone": {
+      "title": "Arraste e solte arquivos aqui",
+      "subtitle": "Máximo 5 arquivos por vez",
+      "button": "Selecionar Arquivos"
+    },
+    "fileList": {
+      "name": "Nome",
+      "size": "Tamanho",
+      "targetFormat": "Formato Alvo",
+      "status": "Status",
+      "actions": "Ações",
+      "remove": "Remover",
+      "download": "Baixar"
+    },
+    "status": {
+      "pending": "Pendente",
+      "converting": "Convertendo...",
+      "completed": "Concluído",
+      "failed": "Falhou"
+    },
+    "convertAll": "Converter Tudo",
+    "converting": "Convertendo...",
+    "noFiles": "Nenhum arquivo adicionado",
+    "maxFiles": "Máximo 5 arquivos permitidos",
+    "downloadReady": "Pronto para baixar"
+  },
+  "apiServer": {
+    "title": "Servidor API Local",
+    "description": "Execute uma API REST local para conversão de arquivos",
+    "start": "Iniciar Servidor",
+    "stop": "Parar Servidor",
+    "running": "Rodando",
+    "stopped": "Parado",
+    "address": "Endereço do Servidor",
+    "port": "Porta",
+    "apiKey": "Chave API",
+    "generateKey": "Gerar Nova Chave",
+    "copyKey": "Copiar Chave",
+    "keyCopied": "Chave copiada para a área de transferência",
+    "endpoints": {
+      "title": "Endpoints Disponíveis",
+      "convert": "POST /api/convert - Converter arquivos",
+      "status": "GET /api/status - Status do servidor"
+    },
+    "security": "Autenticação necessária via token Bearer"
+  },
+  "settings": {
+    "title": "Configurações",
+    "language": "Idioma",
+    "theme": "Tema",
+    "cache": "Cache",
+    "clearCache": "Limpar Cache",
+    "cacheCleared": "Cache limpo com sucesso",
+    "about": "Sobre",
+    "version": "Versão",
+    "credits": "Desenvolvido por alexyalex.site",
+    "license": "Licença MIT"
+  },
+  "common": {
+    "loading": "Carregando...",
+    "error": "Erro",
+    "success": "Sucesso",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "close": "Fechar",
+    "save": "Salvar",
+    "delete": "Excluir",
+    "edit": "Editar"
+  },
+  "formats": {
+    "image": ["PNG", "JPG", "WEBP", "ICO", "TIFF", "BMP", "GIF"],
+    "video": ["MP4", "MKV", "AVI", "WEBM", "MOV", "FLV"],
+    "audio": ["MP3", "WAV", "FLAC", "AAC", "OGG", "M4A"],
+    "document": ["PDF", "DOCX", "DOC", "TXT", "RTF", "ODT"],
+    "ebook": ["EPUB", "MOBI", "AZW3", "PDF"],
+    "archive": ["ZIP", "TAR", "GZ", "7Z"]
+  }
+}

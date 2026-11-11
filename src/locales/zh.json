@@ -1,0 +1,89 @@
+{
+  "app": {
+    "name": "OpenConvert",
+    "tagline": "本地文件转换器"
+  },
+  "nav": {
+    "converter": "转换器",
+    "apiServer": "API 服务器",
+    "settings": "设置"
+  },
+  "converter": {
+    "dropzone": {
+      "title": "将文件拖拽至此",
+      "subtitle": "一次最多 5 个文件",
+      "button": "选择文件"
+    },
+    "fileList": {
+      "name": "名称",
+      "size": "大小",
+      "targetFormat": "目标格式",
+      "status": "状态",
+      "actions": "操作",
+      "remove": "移除",
+      "download": "下载"
+    },
+    "status": {
+      "pending": "等待中",
+      "converting": "转换中...",
+      "completed": "已完成",
+      "failed": "失败"
+    },
+    "convertAll": "全部转换",
+    "converting": "转换中...",
+    "noFiles": "暂无文件",
+    "maxFiles": "最多允许 5 个文件",
+    "downloadReady": "可下载"
+  },
+  "apiServer": {
+    "title": "本地 API 服务器",
+    "description": "运行本地 REST API 进行文件转换",
+    "start": "启动服务器",
+    "stop": "停止服务器",
+    "running": "运行中",
+    "stopped": "已停止",
+    "address": "服务器地址",
+    "port": "端口",
+    "apiKey": "API 密钥",
+    "generateKey": "生成新密钥",
+    "copyKey": "复制密钥",
+    "keyCopied": "密钥已复制到剪贴板",
+    "endpoints": {
+      "title": "可用端点",
+      "convert": "POST /api/convert - 转换文件",
+      "status": "GET /api/status - 服务器状态"
+    },
+    "security": "需要 Bearer Token 认证"
+  },
+  "settings": {
+    "title": "设置",
+    "language": "语言",
+    "theme": "主题",
+    "cache": "缓存",
+    "clearCache": "清除缓存",
+    "cacheCleared": "缓存已清除",
+    "about": "关于",
+    "version": "版本",
+    "credits": "由 alexyalex.site 开发",
+    "license": "MIT 许可证"
+  },
+  "common": {
+    "loading": "加载中...",
+    "error": "错误",
+    "success": "成功",
+    "cancel": "取消",
+    "confirm": "确认",
+    "close": "关闭",
+    "save": "保存",
+    "delete": "删除",
+    "edit": "编辑"
+  },
+  "formats": {
+    "image": ["PNG", "JPG", "WEBP", "ICO", "TIFF", "BMP", "GIF"],
+    "video": ["MP4", "MKV", "AVI", "WEBM", "MOV", "FLV"],
+    "audio": ["MP3", "WAV", "FLAC", "AAC", "OGG", "M4A"],
+    "document": ["PDF", "DOCX", "DOC", "TXT", "RTF", "ODT"],
+    "ebook": ["EPUB", "MOBI", "AZW3", "PDF"],
+    "archive": ["ZIP", "TAR", "GZ", "7Z"]
+  }
+}

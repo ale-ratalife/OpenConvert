@@ -1,0 +1,89 @@
+{
+  "app": {
+    "name": "OpenConvert",
+    "tagline": "Convertisseur de Fichiers Local"
+  },
+  "nav": {
+    "converter": "Convertisseur",
+    "apiServer": "Serveur API",
+    "settings": "Paramètres"
+  },
+  "converter": {
+    "dropzone": {
+      "title": "Glissez-déposez les fichiers ici",
+      "subtitle": "Maximum 5 fichiers à la fois",
+      "button": "Sélectionner les fichiers"
+    },
+    "fileList": {
+      "name": "Nom",
+      "size": "Taille",
+      "targetFormat": "Format cible",
+      "status": "Statut",
+      "actions": "Actions",
+      "remove": "Supprimer",
+      "download": "Télécharger"
+    },
+    "status": {
+      "pending": "En attente",
+      "converting": "Conversion...",
+      "completed": "Terminé",
+      "failed": "Échec"
+    },
+    "convertAll": "Convertir tout",
+    "converting": "Conversion...",
+    "noFiles": "Aucun fichier ajouté",
+    "maxFiles": "Maximum 5 fichiers autorisés",
+    "downloadReady": "Prêt à télécharger"
+  },
+  "apiServer": {
+    "title": "Serveur API Local",
+    "description": "Exécutez une API REST locale pour la conversion de fichiers",
+    "start": "Démarrer le serveur",
+    "stop": "Arrêter le serveur",
+    "running": "En cours",
+    "stopped": "Arrêté",
+    "address": "Adresse du serveur",
+    "port": "Port",
+    "apiKey": "Clé API",
+    "generateKey": "Générer une nouvelle clé",
+    "copyKey": "Copier la clé",
+    "keyCopied": "Clé copiée dans le presse-papiers",
+    "endpoints": {
+      "title": "Endpoints disponibles",
+      "convert": "POST /api/convert - Convertir des fichiers",
+      "status": "GET /api/status - Statut du serveur"
+    },
+    "security": "Authentification requise via token Bearer"
+  },
+  "settings": {
+    "title": "Paramètres",
+    "language": "Langue",
+    "theme": "Thème",
+    "cache": "Cache",
+    "clearCache": "Vider le cache",
+    "cacheCleared": "Cache vidé avec succès",
+    "about": "À propos",
+    "version": "Version",
+    "credits": "Développé par alexyalex.site",
+    "license": "Licence MIT"
+  },
+  "common": {
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "success": "Succès",
+    "cancel": "Annuler",
+    "confirm": "Confirmer",
+    "close": "Fermer",
+    "save": "Enregistrer",
+    "delete": "Supprimer",
+    "edit": "Modifier"
+  },
+  "formats": {
+    "image": ["PNG", "JPG", "WEBP", "ICO", "TIFF", "BMP", "GIF"],
+    "video": ["MP4", "MKV", "AVI", "WEBM", "MOV", "FLV"],
+    "audio": ["MP3", "WAV", "FLAC", "AAC", "OGG", "M4A"],
+    "document": ["PDF", "DOCX", "DOC", "TXT", "RTF", "ODT"],
+    "ebook": ["EPUB", "MOBI", "AZW3", "PDF"],
+    "archive": ["ZIP", "TAR", "GZ", "7Z"]
+  }
+}

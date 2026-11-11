@@ -1,0 +1,89 @@
+{
+  "app": {
+    "name": "OpenConvert",
+    "tagline": "محول الملفات المحلي"
+  },
+  "nav": {
+    "converter": "المحول",
+    "apiServer": "خادم API",
+    "settings": "الإعدادات"
+  },
+  "converter": {
+    "dropzone": {
+      "title": "اسحب وأفل الملفات هنا",
+      "subtitle": "الحد الأقصى 5 ملفات في المرة الواحدة",
+      "button": "اختر الملفات"
+    },
+    "fileList": {
+      "name": "الاسم",
+      "size": "الحجم",
+      "targetFormat": "التنسيق المستهدف",
+      "status": "الحالة",
+      "actions": "الإجراءات",
+      "remove": "إزالة",
+      "download": "تنزيل"
+    },
+    "status": {
+      "pending": "قيد الانتظار",
+      "converting": "جاري التحويل...",
+      "completed": "مكتمل",
+      "failed": "فشل"
+    },
+    "convertAll": "تحويل الكل",
+    "converting": "جاري التحويل...",
+    "noFiles": "لا توجد ملفات مضافة",
+    "maxFiles": "الحد الأقصى 5 ملفات",
+    "downloadReady": "جاهز للتنزيل"
+  },
+  "apiServer": {
+    "title": "خادم API محلي",
+    "description": "تشغيل REST API محلي لتحويل الملفات",
+    "start": "بدء الخادم",
+    "stop": "إيقاف الخادم",
+    "running": "يعمل",
+    "stopped": "متوقف",
+    "address": "عنوان الخادم",
+    "port": "المنفذ",
+    "apiKey": "مفتاح API",
+    "generateKey": "إنشاء مفتاح جديد",
+    "copyKey": "نسخ المفتاح",
+    "keyCopied": "تم نسخ المفتاح إلى الحافظة",
+    "endpoints": {
+      "title": "النقاط المتاحة",
+      "convert": "POST /api/convert - تحويل الملفات",
+      "status": "GET /api/status - حالة الخادم"
+    },
+    "security": "مصادقة مطلوبة عبر Bearer token"
+  },
+  "settings": {
+    "title": "الإعدادات",
+    "language": "اللغة",
+    "theme": "السمة",
+    "cache": "ذاكرة التخزين المؤقت",
+    "clearCache": "مسح ذاكرة التخزين المؤقت",
+    "cacheCleared": "تم مسح ذاكرة التخزين المؤقت بنجاح",
+    "about": "حول",
+    "version": "الإصدار",
+    "credits": "تم تطويره بواسطة alexyalex.site",
+    "license": "رخصة MIT"
+  },
+  "common": {
+    "loading": "جاري التحميل...",
+    "error": "خطأ",
+    "success": "نجاح",
+    "cancel": "إلغاء",
+    "confirm": "تأكيد",
+    "close": "إغلاق",
+    "save": "حفظ",
+    "delete": "حذف",
+    "edit": "تحرير"
+  },
+  "formats": {
+    "image": ["PNG", "JPG", "WEBP", "ICO", "TIFF", "BMP", "GIF"],
+    "video": ["MP4", "MKV", "AVI", "WEBM", "MOV", "FLV"],
+    "audio": ["MP3", "WAV", "FLAC", "AAC", "OGG", "M4A"],
+    "document": ["PDF", "DOCX", "DOC", "TXT", "RTF", "ODT"],
+    "ebook": ["EPUB", "MOBI", "AZW3", "PDF"],
+    "archive": ["ZIP", "TAR", "GZ", "7Z"]
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "app": {
+    "name": "OpenConvert",
+    "tagline": "ローカルファイルコンバーター"
+  },
+  "nav": {
+    "converter": "コンバーター",
+    "apiServer": "APIサーバー",
+    "settings": "設定"
+  },
+  "converter": {
+    "dropzone": {
+      "title": "ここにファイルをドラッグ＆ドロップ",
+      "subtitle": "最大5ファイルまで",
+      "button": "ファイルを選択"
+    },
+    "fileList": {
+      "name": "ファイル名",
+      "size": "サイズ",
+      "targetFormat": "出力形式",
+      "status": "状態",
+      "actions": "操作",
+      "remove": "削除",
+      "download": "ダウンロード"
+    },
+    "status": {
+      "pending": "待機中",
+      "converting": "変換中...",
+      "completed": "完了",
+      "failed": "失敗"
+    },
+    "convertAll": "すべて変換",
+    "converting": "変換中...",
+    "noFiles": "ファイルが追加されていません",
+    "maxFiles": "最大5ファイルまで",
+    "downloadReady": "ダウンロード準備完了"
+  },
+  "apiServer": {
+    "title": "ローカルAPIサーバー",
+    "description": "ファイル変換用のローカルREST APIを実行",
+    "start": "サーバー開始",
+    "stop": "サーバー停止",
+    "running": "実行中",
+    "stopped": "停止中",
+    "address": "サーバーアドレス",
+    "port": "ポート",
+    "apiKey": "APIキー",
+    "generateKey": "新しいキーを生成",
+    "copyKey": "キーをコピー",
+    "keyCopied": "クリップボードにコピーしました",
+    "endpoints": {
+      "title": "利用可能なエンドポイント",
+      "convert": "POST /api/convert - ファイル変換",
+      "status": "GET /api/status - サーバー状態"
+    },
+    "security": "Bearerトークンによる認証が必要"
+  },
+  "settings": {
+    "title": "設定",
+    "language": "言語",
+    "theme": "テーマ",
+    "cache": "キャッシュ",
+    "clearCache": "キャッシュをクリア",
+    "cacheCleared": "キャッシュをクリアしました",
+    "about": "について",
+    "version": "バージョン",
+    "credits": "開発: alexyalex.site",
+    "license": "MITライセンス"
+  },
+  "common": {
+    "loading": "読み込み中...",
+    "error": "エラー",
+    "success": "成功",
+    "cancel": "キャンセル",
+    "confirm": "確認",
+    "close": "閉じる",
+    "save": "保存",
+    "delete": "削除",
+    "edit": "編集"
+  },
+  "formats": {
+    "image": ["PNG", "JPG", "WEBP", "ICO", "TIFF", "BMP", "GIF"],
+    "video": ["MP4", "MKV", "AVI", "WEBM", "MOV", "FLV"],
+    "audio": ["MP3", "WAV", "FLAC", "AAC", "OGG", "M4A"],
+    "document": ["PDF", "DOCX", "DOC", "TXT", "RTF", "ODT"],
+    "ebook": ["EPUB", "MOBI", "AZW3", "PDF"],
+    "archive": ["ZIP", "TAR", "GZ", "7Z"]
+  }
+}

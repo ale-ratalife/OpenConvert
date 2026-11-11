@@ -1,0 +1,89 @@
+{
+  "app": {
+    "name": "OpenConvert",
+    "tagline": "Локальный конвертер файлов"
+  },
+  "nav": {
+    "converter": "Конвертер",
+    "apiServer": "API Сервер",
+    "settings": "Настройки"
+  },
+  "converter": {
+    "dropzone": {
+      "title": "Перетащите файлы сюда",
+      "subtitle": "Максимум 5 файлов одновременно",
+      "button": "Выбрать файлы"
+    },
+    "fileList": {
+      "name": "Имя",
+      "size": "Размер",
+      "targetFormat": "Целевой формат",
+      "status": "Статус",
+      "actions": "Действия",
+      "remove": "Удалить",
+      "download": "Скачать"
+    },
+    "status": {
+      "pending": "Ожидание",
+      "converting": "Конвертация...",
+      "completed": "Завершено",
+      "failed": "Ошибка"
+    },
+    "convertAll": "Конвертировать все",
+    "converting": "Конвертация...",
+    "noFiles": "Файлы не добавлены",
+    "maxFiles": "Максимум 5 файлов",
+    "downloadReady": "Готов к скачиванию"
+  },
+  "apiServer": {
+    "title": "Локальный API Сервер",
+    "description": "Запустите локальный REST API для конвертации файлов",
+    "start": "Запустить сервер",
+    "stop": "Остановить сервер",
+    "running": "Работает",
+    "stopped": "Остановлен",
+    "address": "Адрес сервера",
+    "port": "Порт",
+    "apiKey": "API Ключ",
+    "generateKey": "Сгенерировать новый ключ",
+    "copyKey": "Копировать ключ",
+    "keyCopied": "Ключ скопирован в буфер обмена",
+    "endpoints": {
+      "title": "Доступные эндпоинты",
+      "convert": "POST /api/convert - Конвертировать файлы",
+      "status": "GET /api/status - Статус сервера"
+    },
+    "security": "Требуется аутентификация через Bearer token"
+  },
+  "settings": {
+    "title": "Настройки",
+    "language": "Язык",
+    "theme": "Тема",
+    "cache": "Кэш",
+    "clearCache": "Очистить кэш",
+    "cacheCleared": "Кэш успешно очищен",
+    "about": "О программе",
+    "version": "Версия",
+    "credits": "Разработано alexyalex.site",
+    "license": "Лицензия MIT"
+  },
+  "common": {
+    "loading": "Загрузка...",
+    "error": "Ошибка",
+    "success": "Успех",
+    "cancel": "Отмена",
+    "confirm": "Подтвердить",
+    "close": "Закрыть",
+    "save": "Сохранить",
+    "delete": "Удалить",
+    "edit": "Редактировать"
+  },
+  "formats": {
+    "image": ["PNG", "JPG", "WEBP", "ICO", "TIFF", "BMP", "GIF"],
+    "video": ["MP4", "MKV", "AVI", "WEBM", "MOV", "FLV"],
+    "audio": ["MP3", "WAV", "FLAC", "AAC", "OGG", "M4A"],
+    "document": ["PDF", "DOCX", "DOC", "TXT", "RTF", "ODT"],
+    "ebook": ["EPUB", "MOBI", "AZW3", "PDF"],
+    "archive": ["ZIP", "TAR", "GZ", "7Z"]
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "app": {
+    "name": "OpenConvert",
+    "tagline": "Convertidor de Archivos Local"
+  },
+  "nav": {
+    "converter": "Convertidor",
+    "apiServer": "Servidor API",
+    "settings": "Configuración"
+  },
+  "converter": {
+    "dropzone": {
+      "title": "Arrastra y suelta archivos aquí",
+      "subtitle": "Máximo 5 archivos a la vez",
+      "button": "Seleccionar Archivos"
+    },
+    "fileList": {
+      "name": "Nombre",
+      "size": "Tamaño",
+      "targetFormat": "Formato Destino",
+      "status": "Estado",
+      "actions": "Acciones",
+      "remove": "Eliminar",
+      "download": "Descargar"
+    },
+    "status": {
+      "pending": "Pendiente",
+      "converting": "Convirtiendo...",
+      "completed": "Completado",
+      "failed": "Falló"
+    },
+    "convertAll": "Convertir Todo",
+    "converting": "Convirtiendo...",
+    "noFiles": "No hay archivos añadidos",
+    "maxFiles": "Máximo 5 archivos permitidos",
+    "downloadReady": "Listo para descargar"
+  },
+  "apiServer": {
+    "title": "Servidor API Local",
+    "description": "Ejecuta una API REST local para conversión de archivos",
+    "start": "Iniciar Servidor",
+    "stop": "Detener Servidor",
+    "running": "Ejecutándose",
+    "stopped": "Detenido",
+    "address": "Dirección del Servidor",
+    "port": "Puerto",
+    "apiKey": "Clave API",
+    "generateKey": "Generar Nueva Clave",
+    "copyKey": "Copiar Clave",
+    "keyCopied": "Clave copiada al portapapeles",
+    "endpoints": {
+      "title": "Endpoints Disponibles",
+      "convert": "POST /api/convert - Convertir archivos",
+      "status": "GET /api/status - Estado del servidor"
+    },
+    "security": "Autenticación requerida mediante token Bearer"
+  },
+  "settings": {
+    "title": "Configuración",
+    "language": "Idioma",
+    "theme": "Tema",
+    "cache": "Caché",
+    "clearCache": "Limpiar Caché",
+    "cacheCleared": "Caché limpiada correctamente",
+    "about": "Acerca de",
+    "version": "Versión",
+    "credits": "Desarrollado por alexyalex.site",
+    "license": "Licencia MIT"
+  },
+  "common": {
+    "loading": "Cargando...",
+    "error": "Error",
+    "success": "Éxito",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "close": "Cerrar",
+    "save": "Guardar",
+    "delete": "Eliminar",
+    "edit": "Editar"
+  },
+  "formats": {
+    "image": ["PNG", "JPG", "WEBP", "ICO", "TIFF", "BMP", "GIF"],
+    "video": ["MP4", "MKV", "AVI", "WEBM", "MOV", "FLV"],
+    "audio": ["MP3", "WAV", "FLAC", "AAC", "OGG", "M4A"],
+    "document": ["PDF", "DOCX", "DOC", "TXT", "RTF", "ODT"],
+    "ebook": ["EPUB", "MOBI", "AZW3", "PDF"],
+    "archive": ["ZIP", "TAR", "GZ", "7Z"]
+  }
+}
